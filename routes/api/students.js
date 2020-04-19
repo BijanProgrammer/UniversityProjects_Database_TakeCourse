@@ -3,8 +3,8 @@ const router = express.Router();
 
 const database = require('./database');
 
-// @route	GET		api/items
-// @desc	Get All Items
+// @route	GET		api/students
+// @desc	Show All Students
 // @acess	Public
 router.get('/', (req, res) => {
 	let command = 'SELECT * FROM student;';
