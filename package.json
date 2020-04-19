@@ -1,0 +1,29 @@
+{
+	"name": "take-course",
+	"version": "1.0.0",
+	"description": "University Projects: Database - Take Course",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"server": "nodemon server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/BijanEisapour/UniversityProjects_Database_TakeCourse.git"
+	},
+	"author": "BijanProgrammer",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/BijanEisapour/UniversityProjects_Database_TakeCourse/issues"
+	},
+	"homepage": "https://github.com/BijanEisapour/UniversityProjects_Database_TakeCourse#readme",
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"concurrently": "^5.1.0",
+		"express": "^4.17.1",
+		"mysql": "^2.18.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.3"
+	}
+}
