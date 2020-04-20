@@ -2,8 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // Routes
-const items = require('./routes/api/items');
-const students = require('./routes/api/items');
+const students = require('./routes/api/students');
 
 const app = express();
 
@@ -11,7 +10,6 @@ const app = express();
 app.use(bodyParser.json());
 
 // Use Routes
-app.use('/api/items', items);
 app.use('/api/students', students);
 
 // Start Server
