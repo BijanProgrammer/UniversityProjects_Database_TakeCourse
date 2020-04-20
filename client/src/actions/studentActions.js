@@ -1,5 +1,14 @@
 import axios from 'axios';
-import { GET_STUDENTS, ADD_STUDENT, DELETE_STUDENT, STUDENTS_LOADING } from './types';
+import {
+	GET_STUDENTS,
+	ADD_STUDENT,
+	SELECT_STUDENT,
+	EDIT_STUDENT,
+	DELETE_STUDENT,
+	OPEN_MODAL,
+	CLOSE_MODAL,
+	STUDENTS_LOADING
+} from './types';
 
 export const getStudents = () => (dispatch) => {
 	dispatch(setStudentsLoadnig());
@@ -21,11 +30,46 @@ export const addStudent = (student) => (dispatch) => {
 	);
 };
 
-export const deleteStudent = (id) => {
-	return {
-		type: DELETE_STUDENT,
-		payload: id
-	};
+export const selectStudent = (id) => (dispatch) => {
+	axios.get(`/api/students/${id}`).then((res) =>
+		dispatch({
+			type: SELECT_STUDENT,
+			payload: res.data
+		})
+	);
+};
+
+export const selectStudentOnChange = (student) => (dispatch) => {
+	dispatch({
+		type: SELECT_STUDENT,
+		payload: student
+	});
+};
+
+export const editStudent = (student) => (dispatch) => {
+	axios.post('/api/students/', student).then((res) =>
+		dispatch({
+			type: EDIT_STUDENT,
+			payload: res.data
+		})
+	);
+};
+
+export const deleteStudent = (id) => (dispatch) => {
+	axios.delete(`/api/students/${id}`).then((res) =>
+		dispatch({
+			type: DELETE_STUDENT,
+			payload: id
+		})
+	);
+};
+
+export const openModal = (clearSelectedStudent = false) => (dispatch) => {
+	dispatch({ type: OPEN_MODAL, payload: clearSelectedStudent });
+};
+
+export const closeModal = () => (dispatch) => {
+	dispatch({ type: CLOSE_MODAL });
 };
 
 export const setStudentsLoadnig = () => {

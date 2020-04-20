@@ -1,4 +1,8 @@
 export const GET_STUDENTS = 'GET_STUDENTS';
 export const ADD_STUDENT = 'ADD_STUDENT';
+export const SELECT_STUDENT = 'SELECT_STUDENT';
+export const EDIT_STUDENT = 'EDIT_STUDENT';
 export const DELETE_STUDENT = 'DELETE_STUDENT';
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const STUDENTS_LOADING = 'STUDENTS_LOADING';

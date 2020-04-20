@@ -2,58 +2,53 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import { connect } from 'react-redux';
-import { addStudent } from '../actions/studentActions';
+import { addStudent, editStudent, selectStudentOnChange, openModal, closeModal } from '../actions/studentActions';
 
 class StudentModal extends Component {
-	state = {
-		isOpen: false,
-		name: '',
-		dept_name: '',
-		tot_cred: 0
-	};
-
-	toggle = () => {
-		this.setState({
-			isOpen: !this.state.isOpen
-		});
-	};
-
 	onChange = (e) => {
-		this.setState({ [e.target.name]: e.target.value });
+		let editedStudent = { ...this.props.student.selectedStudent[0] };
+		editedStudent[e.target.name] = e.target.value;
+		this.props.selectStudentOnChange([
+			editedStudent
+		]);
+
+		console.log('--> onChange --> editedStudent --> ', editedStudent);
 	};
 
 	onSubmit = (e) => {
 		e.preventDefault();
 
-		const newStudent = {
-			ID: this.state.ID,
-			name: this.state.name,
-			dept_name: this.state.dept_name,
-			tot_cred: this.state.tot_cred
-		};
+		this.props.editStudent(this.props.student.selectedStudent[0]);
 
-		this.props.addStudent(newStudent);
-
-		this.toggle();
+		this.props.closeModal();
 	};
 
 	render() {
+		const { selectedStudent, isModalOpen } = this.props.student;
+		const isStudentSelected = Object.keys(selectedStudent).length !== 0;
+
+		console.log('--> render --> selectedStudent --> ', selectedStudent);
+		let student = selectedStudent[0];
+
+		let modalTitle = isStudentSelected ? 'Edit Student' : 'Add to Students List';
+		let idValue = isStudentSelected ? student.ID : '';
+		let nameValue = isStudentSelected ? student.name : '';
+		let dept_nameValue = isStudentSelected ? student.dept_name : '';
+		let tot_credValue = isStudentSelected ? student.tot_cred : '';
+
 		return (
 			<div>
-				<Button color='dark' style={{ marginBottom: '2rem' }} onClick={this.toggle}>
-					Add Student
-				</Button>
-
-				<Modal isOpen={this.state.isOpen} toggle={this.toggle}>
-					<ModalHeader toggle={this.toggle}>Add to Students List</ModalHeader>
+				<Modal isOpen={isModalOpen} toggle={this.props.closeModal}>
+					<ModalHeader toggle={this.props.closeModal}>{modalTitle}</ModalHeader>
 					<ModalBody>
 						<Form onSubmit={this.onSubmit}>
 							<FormGroup>
-								<Label for='id'>Name</Label>
+								<Label for='id'>ID</Label>
 								<Input
 									type='text'
 									name='ID'
 									id='id'
+									value={idValue}
 									placeholder='Student ID ...'
 									onChange={this.onChange}
 								/>
@@ -64,6 +59,7 @@ class StudentModal extends Component {
 									type='text'
 									name='name'
 									id='name'
+									value={nameValue}
 									placeholder='Student Name ...'
 									onChange={this.onChange}
 								/>
@@ -74,6 +70,7 @@ class StudentModal extends Component {
 									type='text'
 									name='dept_name'
 									id='dept-name'
+									value={dept_nameValue}
 									placeholder='Department Name ...'
 									onChange={this.onChange}
 								/>
@@ -84,6 +81,7 @@ class StudentModal extends Component {
 									type='text'
 									name='tot_cred'
 									id='tot-cred'
+									value={tot_credValue}
 									placeholder='Total Credit ...'
 									onChange={this.onChange}
 								/>
@@ -103,4 +101,6 @@ const mapStateToProps = (state) => ({
 	student: state.student
 });
 
-export default connect(mapStateToProps, { addStudent })(StudentModal);
+export default connect(mapStateToProps, { addStudent, editStudent, selectStudentOnChange, openModal, closeModal })(
+	StudentModal
+);
