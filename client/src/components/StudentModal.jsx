@@ -9,8 +9,6 @@ class StudentModal extends Component {
         let editedStudent = { ...this.props.student.selectedStudent[0] };
         editedStudent[e.target.name] = e.target.value;
         this.props.selectStudentOnChange([editedStudent]);
-
-        console.log('--> onChange --> editedStudent --> ', editedStudent);
     };
 
     onSubmit = (e) => {
@@ -25,7 +23,6 @@ class StudentModal extends Component {
         const { selectedStudent, isModalOpen } = this.props.student;
         const isStudentSelected = Object.keys(selectedStudent).length !== 0;
 
-        console.log('--> render --> selectedStudent --> ', selectedStudent);
         let student = selectedStudent[0];
 
         let modalTitle = isStudentSelected ? 'Edit Student' : 'Add to Students List';
