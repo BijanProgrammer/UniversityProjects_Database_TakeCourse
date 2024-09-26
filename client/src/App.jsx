@@ -3,7 +3,7 @@ import AppNavbar from './components/AppNavbar.jsx';
 import StudentsList from './components/StudentsList.jsx';
 import StudentModal from './components/StudentModal.jsx';
 
-import { Container } from 'reactstrap';
+import { Container } from 'react-bootstrap';
 
 import { Provider } from 'react-redux';
 import store from './store';

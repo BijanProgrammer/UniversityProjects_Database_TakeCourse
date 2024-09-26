@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, Modal } from 'react-bootstrap';
 
 import { connect } from 'react-redux';
-import { addStudent, editStudent, selectStudentOnChange, openModal, closeModal } from '../actions/studentActions';
+import { addStudent, closeModal, editStudent, openModal, selectStudentOnChange } from '../actions/studentActions';
 
 class StudentModal extends Component {
     onChange = (e) => {
@@ -26,20 +26,22 @@ class StudentModal extends Component {
         let student = selectedStudent[0];
 
         let modalTitle = isStudentSelected ? 'Edit Student' : 'Add to Students List';
-        let idValue = isStudentSelected ? student.ID : '';
-        let nameValue = isStudentSelected ? student.name : '';
-        let dept_nameValue = isStudentSelected ? student.dept_name : '';
-        let tot_credValue = isStudentSelected ? student.tot_cred : '';
+        let idValue = student?.ID || '';
+        let nameValue = student?.name || '';
+        let dept_nameValue = student?.dept_name || '';
+        let tot_credValue = student?.tot_cred || '';
 
         return (
             <div>
-                <Modal isOpen={isModalOpen} toggle={this.props.closeModal}>
-                    <ModalHeader toggle={this.props.closeModal}>{modalTitle}</ModalHeader>
-                    <ModalBody>
+                <Modal show={isModalOpen} onHide={this.props.closeModal}>
+                    <Modal.Header closeButton>{modalTitle}</Modal.Header>
+                    <Modal.Body>
                         <Form onSubmit={this.onSubmit}>
-                            <FormGroup>
-                                <Label for="id">ID</Label>
-                                <Input
+                            <Form.Group>
+                                <Form.Label htmlFor="id" column={true}>
+                                    ID
+                                </Form.Label>
+                                <Form.Control
                                     type="text"
                                     name="ID"
                                     id="id"
@@ -47,10 +49,12 @@ class StudentModal extends Component {
                                     placeholder="Student ID ..."
                                     onChange={this.onChange}
                                 />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="name">Name</Label>
-                                <Input
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label htmlFor="name" column={true}>
+                                    Name
+                                </Form.Label>
+                                <Form.Control
                                     type="text"
                                     name="name"
                                     id="name"
@@ -58,10 +62,12 @@ class StudentModal extends Component {
                                     placeholder="Student Name ..."
                                     onChange={this.onChange}
                                 />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="dept-name">Department</Label>
-                                <Input
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label htmlFor="dept-name" column={true}>
+                                    Department
+                                </Form.Label>
+                                <Form.Control
                                     type="text"
                                     name="dept_name"
                                     id="dept-name"
@@ -69,10 +75,12 @@ class StudentModal extends Component {
                                     placeholder="Department Name ..."
                                     onChange={this.onChange}
                                 />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="tot-cred">Total Credit</Label>
-                                <Input
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label htmlFor="tot-cred" column={true}>
+                                    Total Credit
+                                </Form.Label>
+                                <Form.Control
                                     type="text"
                                     name="tot_cred"
                                     id="tot-cred"
@@ -80,12 +88,12 @@ class StudentModal extends Component {
                                     placeholder="Total Credit ..."
                                     onChange={this.onChange}
                                 />
-                            </FormGroup>
-                            <Button color="dark" style={{ marginTop: '2rem' }} block>
+                            </Form.Group>
+                            <Button type="submit" variant="dark" className="mt-4">
                                 Add Student
                             </Button>
                         </Form>
-                    </ModalBody>
+                    </Modal.Body>
                 </Modal>
             </div>
         );

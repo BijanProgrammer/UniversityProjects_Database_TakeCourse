@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Button } from 'reactstrap';
+import { Table, Button } from 'react-bootstrap';
 
 import IcBaselineDelete from '../icons/IcBaselineDelete.jsx';
 import IcBaselineEdit from '../icons/IcBaselineEdit.jsx';
@@ -30,7 +30,7 @@ class StudentsList extends Component {
 
         return (
             <React.Fragment>
-                <Button color="dark" style={{ marginBottom: '2rem' }} onClick={this.props.openModal.bind(true)}>
+                <Button variant="dark" className="mb-4" onClick={this.props.openModal.bind(true)}>
                     Add Student
                 </Button>
 
@@ -46,14 +46,14 @@ class StudentsList extends Component {
                     </thead>
                     <tbody>
                         {students.map(({ ID, name, dept_name, tot_cred }) => (
-                            <tr>
+                            <tr key={ID}>
                                 <th scope="row">{ID}</th>
                                 <td>{name}</td>
                                 <td>{dept_name}</td>
                                 <td>{tot_cred}</td>
                                 <td>
                                     <Button
-                                        color="primary"
+                                        variant="primary"
                                         size="sm"
                                         className="action-button"
                                         onClick={this.clickedOnShowButton.bind(this, ID)}
@@ -61,7 +61,7 @@ class StudentsList extends Component {
                                         <IcBaselineVisibility />
                                     </Button>
                                     <Button
-                                        color="warning"
+                                        variant="warning"
                                         size="sm"
                                         className="action-button"
                                         onClick={this.clickedOnEditButton.bind(this, ID)}
@@ -69,7 +69,7 @@ class StudentsList extends Component {
                                         <IcBaselineEdit />
                                     </Button>
                                     <Button
-                                        color="danger"
+                                        variant="danger"
                                         size="sm"
                                         className="action-button"
                                         onClick={this.clickedOnDeleteButton.bind(this, ID)}

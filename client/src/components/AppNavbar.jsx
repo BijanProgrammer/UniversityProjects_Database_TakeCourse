@@ -1,34 +1,27 @@
 import React, { Component } from 'react';
 
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Container } from 'reactstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 
 class AppNavbar extends Component {
-    state = {
-        isOpen: false,
-    };
-
-    toggle = () => {
-        this.setState({
-            isOpen: !this.state.isOpen,
-        });
-    };
-
     render() {
         return (
             <div>
-                <Navbar color="dark" dark expand="sm" className="mb-5">
+                <Navbar bg="dark" data-bs-theme="dark" expand="sm" className="mb-5">
                     <Container>
-                        <NavbarBrand href="/">Take Course</NavbarBrand>
-                        <NavbarToggler onClick={this.toggle} />
-                        <Collapse navbar isOpen={this.state.isOpen}>
-                            <Nav navbar className="ml-auto">
-                                <NavItem>
-                                    <NavLink href="https://github.com/BijanEisapour/UniversityProjects_Database_TakeCourse">
+                        <Navbar.Brand href="/">Take Course</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="navbar-collapse" />
+                        <Navbar.Collapse id="navbar-collapse">
+                            <Nav navbar className="ms-auto">
+                                <Nav.Item>
+                                    <Nav.Link
+                                        href="https://github.com/BijanEisapour/UniversityProjects_Database_TakeCourse"
+                                        target="_blank"
+                                    >
                                         Github Repo
-                                    </NavLink>
-                                </NavItem>
+                                    </Nav.Link>
+                                </Nav.Item>
                             </Nav>
-                        </Collapse>
+                        </Navbar.Collapse>
                     </Container>
                 </Navbar>
             </div>
