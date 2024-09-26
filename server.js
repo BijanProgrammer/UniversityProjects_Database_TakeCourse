@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 
 // Routes
 const students = require('./routes/api/students');
@@ -7,7 +6,7 @@ const students = require('./routes/api/students');
 const app = express();
 
 // Body Parser Middleware
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Use Routes
 app.use('/api/students', students);
