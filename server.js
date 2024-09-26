@@ -1,12 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 
 // Routes
 const students = require('./routes/api/students');
 
 const app = express();
-
-// Body Parser Middleware
 app.use(express.json());
+app.use(cors());
 
 // Use Routes
 app.use('/api/students', students);

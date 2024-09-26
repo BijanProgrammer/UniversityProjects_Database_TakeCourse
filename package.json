@@ -1,31 +1,33 @@
 {
-	"name": "take-course",
-	"version": "1.0.0",
-	"description": "University Projects: Database - Take Course",
-	"main": "server.js",
-	"scripts": {
-		"client-install": "npm install --prefix client",
-		"start": "node server.js",
-		"server": "nodemon server.js",
-		"client": "npm start --prefix client",
-		"dev": "concurrently \"npm run server\" \"npm run client\""
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/BijanEisapour/UniversityProjects_Database_TakeCourse.git"
-	},
-	"author": "BijanProgrammer",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/BijanEisapour/UniversityProjects_Database_TakeCourse/issues"
-	},
-	"homepage": "https://github.com/BijanEisapour/UniversityProjects_Database_TakeCourse#readme",
-	"dependencies": {
-		"concurrently": "^9.0.1",
-		"express": "^4.21.0",
-		"mysql": "^2.18.1"
-	},
-	"devDependencies": {
-		"nodemon": "^3.1.7"
-	}
+    "name": "take-course",
+    "version": "2.0.0",
+    "description": "University Projects: Database - Take Course",
+    "main": "server.js",
+    "scripts": {
+        "client-install": "npm install --prefix client",
+        "start": "node server.js",
+        "server": "nodemon server.js",
+        "client": "npm start --prefix client",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/BijanEisapour/UniversityProjects_Database_TakeCourse.git"
+    },
+    "author": "BijanProgrammer",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/BijanEisapour/UniversityProjects_Database_TakeCourse/issues"
+    },
+    "homepage": "https://github.com/BijanEisapour/UniversityProjects_Database_TakeCourse#readme",
+    "dependencies": {
+        "concurrently": "^9.0.1",
+        "cors": "^2.8.5",
+        "express": "^4.21.0",
+        "mysql": "^2.18.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.7",
+        "prettier": "^3.3.3"
+    }
 }
